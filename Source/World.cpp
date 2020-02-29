@@ -7,7 +7,7 @@ using namespace sf;
 
 World::World () {
 	m_window.create(VideoMode::getDesktopMode(), "Plant Growing Simulation");
-    m_window.setVerticalSyncEnabled(true);
+	m_window.setVerticalSyncEnabled(true);
 	ImGui::SFML::Init(m_window);
 }
 
@@ -25,10 +25,12 @@ void World::update () {
 	ImGui::SFML::Update(m_window, m_deltaClock.restart());
 
 	m_air.update();
+	m_soil.update(m_window, m_air);
 }
 
 void World::draw () {
 	m_window.clear(m_air.getColor());
 	ImGui::SFML::Render(m_window);
+	m_soil.draw(m_window);
 	m_window.display();
 }

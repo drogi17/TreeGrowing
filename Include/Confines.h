@@ -12,3 +12,8 @@
 #define MIN_TEMPERATURE 	-20 
 #define MAX_TEMPERATURE  	 60 
 #define DEFAULT_TEMPERATURE  20 
+
+#define MIN_MINERALS 		 0
+#define MAX_MINERALS 		 100
+#define DEFAULT_MINERALS 	 60
+

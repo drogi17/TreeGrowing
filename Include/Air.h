@@ -12,8 +12,8 @@ public:
 
 	Air ();
 
-	unsigned int getHumidity () const { return m_humidity; }
-	unsigned int getTemperature () const { return m_temperature; }
+	int getHumidity () const { return m_humidity; }
+	int getTemperature () const { return m_temperature; }
 	sf::Color getColor (); 
 
 	void update ();
