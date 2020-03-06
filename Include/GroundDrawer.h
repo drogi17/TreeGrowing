@@ -6,19 +6,20 @@
 class GroundDrawer {
 private:
 	
-	sf::Texture 	m_texture;
-	sf::Sprite 		m_sprite;
-	int 			m_state;
+	sf::VertexArray m_surface;
+	sf::VertexArray m_soil;
 
 public:
 
 	GroundDrawer ();
 	
-	void update (sf::RenderWindow &window, Air &air);
+	void generate_mesh (sf::RenderWindow &window, Air &air);
+
+	void update_color (Air &air);
 	void draw (sf::RenderWindow &window);
 
 private:
 
-	void set_texture (std::string file, sf::RenderWindow &window);
-
+	sf::Vector2f generate_point (float x_start, float x_end, float x_range, 
+								 float y_start, float y_end, float y_range);
 };

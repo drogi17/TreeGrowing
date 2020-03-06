@@ -14,10 +14,12 @@
 #define MAX_TEMPERATURE  	 60 
 #define DEFAULT_TEMPERATURE  20 
 
-// Soil
+// Ground
 #define MIN_MINERALS 		 0
 #define MAX_MINERALS 		 100
 #define DEFAULT_MINERALS 	 60
+
+#define DOTS_NUMBER 		 10
 
 // Sun
 #define MIN_WARM 			 0

@@ -11,7 +11,8 @@ Ground::Ground ()
 {}
 
 void Ground::setup (RenderWindow &window, Air &air) {
-	m_drawable.update(window, air);
+	m_drawable.generate_mesh(window, air);
+	m_drawable.update_color(air);
 }
 
 void Ground::update (RenderWindow &window, Air &air) {
@@ -20,7 +21,7 @@ void Ground::update (RenderWindow &window, Air &air) {
 	ImGui::SliderInt("Humidity", &m_humidity, MIN_HUMIDITY, MAX_HUMIDITY);
 	ImGui::End();
 	if (air.isUpdated())
-		m_drawable.update(window, air);
+		m_drawable.update_color(air);
 }
 
 void Ground::draw (RenderWindow &window) {

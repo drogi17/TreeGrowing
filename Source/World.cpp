@@ -6,7 +6,7 @@
 using namespace sf;
 
 World::World () {
-	m_window.create(VideoMode::getDesktopMode(), "Plant Growing Simulation");
+	m_window.create(VideoMode::getDesktopMode(), "Plant Growing Simulation", Style::Fullscreen);
 	m_window.setVerticalSyncEnabled(true);
 	ImGui::SFML::Init(m_window);
 	m_ground.setup(m_window, m_air);
@@ -22,6 +22,9 @@ void World::update () {
 		ImGui::SFML::ProcessEvent(event);
 		if (event.type == sf::Event::Closed)
 			m_window.close();
+		if (event.type == Event::KeyPressed)
+			if (event.key.code == Keyboard::Escape)
+				m_window.close();
 	}
 	ImGui::SFML::Update(m_window, m_deltaClock.restart());
 
