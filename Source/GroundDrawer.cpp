@@ -1,14 +1,14 @@
-#include "SoilDrawable.h"
+#include "GroundDrawer.h"
 #include <iostream>
 
 using namespace sf;
 using namespace std;
 
-SoilDrawable::SoilDrawable ()
+GroundDrawer::GroundDrawer ()
 : m_state(0)
 {}
 
-void SoilDrawable::update (RenderWindow &window, Air &air) {
+void GroundDrawer::update (RenderWindow &window, Air &air) {
 	int t = air.getTemperature();
 	if (t <= 0) {
 		if (m_state != -1) {
@@ -27,11 +27,11 @@ void SoilDrawable::update (RenderWindow &window, Air &air) {
 		}
 }
 
-void SoilDrawable::draw (RenderWindow &window) {
+void GroundDrawer::draw (RenderWindow &window) {
 	window.draw(m_sprite);
 }
 
-void SoilDrawable::set_texture (string file, RenderWindow &window) {
+void GroundDrawer::set_texture (string file, RenderWindow &window) {
 	m_texture.loadFromFile(file);
 	m_sprite.setTexture(m_texture);
 	float scale = (float)window.getSize().x / m_texture.getSize().x;

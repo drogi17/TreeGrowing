@@ -1,19 +1,20 @@
 #pragma once
 
 #include <SFML/Graphics.hpp>
-#include "SoilDrawable.h"
+#include "GroundDrawer.h"
 #include "Air.h"
 
-class Soil {
+class Ground {
 private:
 	
 	int 			m_minerals; // 0 .. 100
 	int 			m_humidity; // 0 .. 100
-	SoilDrawable 	m_drawable;
+	GroundDrawer 	m_drawable;
 
 public:
 
-	Soil ();
+	Ground ();
+	void setup (sf::RenderWindow &window, Air &air);
 
 	int getMinerals () const { return m_minerals; }
 	int getHumidity () const { return m_humidity; }

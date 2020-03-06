@@ -3,7 +3,7 @@
 #include <SFML/Graphics.hpp>
 #include "Air.h"
 
-class SoilDrawable {
+class GroundDrawer {
 private:
 	
 	sf::Texture 	m_texture;
@@ -12,9 +12,7 @@ private:
 
 public:
 
-	SoilDrawable ();
-
-	void setup (sf::RenderWindow &window);
+	GroundDrawer ();
 	
 	void update (sf::RenderWindow &window, Air &air);
 	void draw (sf::RenderWindow &window);

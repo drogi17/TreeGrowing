@@ -9,6 +9,7 @@ World::World () {
 	m_window.create(VideoMode::getDesktopMode(), "Plant Growing Simulation");
 	m_window.setVerticalSyncEnabled(true);
 	ImGui::SFML::Init(m_window);
+	m_ground.setup(m_window, m_air);
 }
 
 World::~World () {
@@ -25,12 +26,14 @@ void World::update () {
 	ImGui::SFML::Update(m_window, m_deltaClock.restart());
 
 	m_air.update();
-	m_soil.update(m_window, m_air);
+	m_ground.update(m_window, m_air);
+	m_sun.update();
 }
 
 void World::draw () {
 	m_window.clear(m_air.getColor());
 	ImGui::SFML::Render(m_window);
-	m_soil.draw(m_window);
+	m_ground.draw(m_window);
+	m_sun.draw(m_window);
 	m_window.display();
 }

@@ -3,13 +3,15 @@
 #include <SFML/Graphics.hpp>
 
 #include "Air.h"
-#include "Soil.h"
+#include "Ground.h"
+#include "Sun.h"
 
 class World {
 private:
 
 	Air 				m_air;
-	Soil 				m_soil;
+	Ground 				m_ground;
+	Sun 				m_sun;
 	sf::Clock 			m_deltaClock;
 	sf::RenderWindow 	m_window;
 
