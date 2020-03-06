@@ -31,3 +31,9 @@
 #define SUN_COLOR_RED		 231
 #define SUN_COLOR_GREEN		 163
 #define SUN_COLOR_BLUE		 0
+
+#define MAX_ALPHA 			 255.f
+#define SUN_RADIUS 			 25.f
+#define RAYS_NUMBER 		 4
+#define Q_COEFFICIENT 		 2
+
