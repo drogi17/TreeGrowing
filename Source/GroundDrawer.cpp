@@ -8,11 +8,9 @@ using namespace std;
 
 GroundDrawer::GroundDrawer ()
 : m_surface(sf::TriangleStrip), m_soil(sf::TriangleStrip)
-{}
-
-void GroundDrawer::generate_mesh (RenderWindow &window, Air &air) {
-	srand(time(NULL));
-
+{ 	srand(time(NULL)); }
+	
+void GroundDrawer::generate_mesh (RenderWindow &window) {
 	float median = window.getSize().y * GROUND_SIZE;
 	float x_step = window.getSize().x / DOTS_NUMBER;
 	float x_range = x_step - x_step * 0.3;
@@ -45,19 +43,48 @@ void GroundDrawer::generate_mesh (RenderWindow &window, Air &air) {
 
 }
 
+void GroundDrawer::generate_minerals (RenderWindow &window) {
+	CircleShape mineral;
+	mineral.setRadius(5.f);
+	mineral.setPointCount(4);
+	mineral.setOrigin(mineral.getRadius(), mineral.getRadius());
+
+	vector<Color> colors = {
+		Color(158, 116, 68),
+		Color(168, 85, 77),
+		Color(149, 155, 171)
+	};
+
+	float y_start = window.getSize().y * (GROUND_SIZE + HILL_SIZE) + mineral.getRadius();
+	float y_end = window.getSize().y;
+	float y_range = y_end - y_start;
+	float x_end = window.getSize().x;
+
+	for (int i = 0; i < 100; i++) {
+		mineral.setRotation(rand()%360);
+		mineral.setPosition(generate_point(
+			0.f, x_end, x_end,
+			y_start, y_end, y_range
+		));
+		mineral.setFillColor(colors[rand()%colors.size()]);
+		m_minerals.push_back(mineral);
+	}
+}
+
 void GroundDrawer::update_color (Air &air) {
 	int t = air.getTemperature();
 	/*Color surface_color(86, 125, 70);
 	Color soil_color(54, 35, 18);*/
 
 	/*Color surface_color(255, 250, 250);
-	Color soil_color(182, 211, 240);*/
+	Color soil_color(182, 211, 240);
+	Color soil_color(129, 108, 91);*/
 
 	/*Color surface_color(212, 182, 128);
 	Color soil_color(112, 70, 42);*/
 
 	Color surface_color;
-	Color soil_color;	
+	Color soil_color;
 	if (t <= (MAX_TEMPERATURE - MIN_TEMPERATURE)/2 + MIN_TEMPERATURE) {
 		float k = (float)(-MIN_TEMPERATURE + t) / (MAX_TEMPERATURE - MIN_TEMPERATURE) * 2;
 		surface_color = Color(
@@ -66,9 +93,9 @@ void GroundDrawer::update_color (Air &air) {
 			250.f + (70.f - 250.f) * k
 		);
 		soil_color = Color(
-			182.f + (54.f - 182.f) * k,
-			211.f + (35.f - 211.f) * k,
-			240.f + (18.f - 240.f) * k
+			129.f + (54.f - 129.f) * k,
+			108.f + (35.f - 108.f) * k,
+			91.f + (18.f - 91.f) * k
 		);
 	} else {
 		float k = ((float)(-MIN_TEMPERATURE + t) / (MAX_TEMPERATURE - MIN_TEMPERATURE) - 0.5f) * 2;
@@ -91,9 +118,13 @@ void GroundDrawer::update_color (Air &air) {
 	
 }
 
-void GroundDrawer::draw (RenderWindow &window) {
+void GroundDrawer::draw (RenderWindow &window, int minerals) {
 	window.draw(m_surface);
 	window.draw(m_soil);
+	float k = (float)(-MIN_MINERALS + minerals) / (MAX_MINERALS - MIN_MINERALS);
+	int N = m_minerals.size() * k;
+	for (int i = 0; i < N; i++)
+		window.draw(m_minerals[i]);
 }
 
 Vector2f GroundDrawer::generate_point (float x_start, float x_end, float x_range, 

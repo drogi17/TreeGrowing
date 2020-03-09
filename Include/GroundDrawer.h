@@ -8,15 +8,17 @@ private:
 	
 	sf::VertexArray m_surface;
 	sf::VertexArray m_soil;
+	std::vector<sf::CircleShape> m_minerals;
 
 public:
 
 	GroundDrawer ();
 	
-	void generate_mesh (sf::RenderWindow &window, Air &air);
+	void generate_mesh (sf::RenderWindow &window);
+	void generate_minerals (sf::RenderWindow &window);
 
 	void update_color (Air &air);
-	void draw (sf::RenderWindow &window);
+	void draw (sf::RenderWindow &window, int minerals);
 
 private:
 

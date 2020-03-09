@@ -11,7 +11,8 @@ Ground::Ground ()
 {}
 
 void Ground::setup (RenderWindow &window, Air &air) {
-	m_drawable.generate_mesh(window, air);
+	m_drawable.generate_mesh(window);
+	m_drawable.generate_minerals(window);
 	m_drawable.update_color(air);
 }
 
@@ -25,5 +26,5 @@ void Ground::update (RenderWindow &window, Air &air) {
 }
 
 void Ground::draw (RenderWindow &window) {
-	m_drawable.draw(window);
+	m_drawable.draw(window, m_minerals);
 }
