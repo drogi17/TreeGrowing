@@ -19,7 +19,9 @@
 #define MAX_MINERALS 		 100
 #define DEFAULT_MINERALS 	 60
 
-#define DOTS_NUMBER 		 10
+#define GROUND_SIZE 		 0.9
+#define DOTS_NUMBER 		 30
+#define HILL_SIZE 			 0.03
 
 // Sun
 #define MIN_WARM 			 0

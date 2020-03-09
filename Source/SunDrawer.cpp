@@ -7,7 +7,7 @@ using namespace std;
 
 SunDrawer::SunDrawer () {
 	CircleShape circle;
-	circle.setRadius(20);
+	circle.setRadius(SUN_RADIUS);
 	circle.setOrigin(circle.getRadius(),circle.getRadius());
 	circle.setPosition(Vector2f(75.f, 75.f));
 	circle.setFillColor(Color(240, 160, 50));

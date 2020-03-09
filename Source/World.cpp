@@ -6,7 +6,9 @@
 using namespace sf;
 
 World::World () {
-	m_window.create(VideoMode::getDesktopMode(), "Plant Growing Simulation", Style::Fullscreen);
+	ContextSettings settings;
+	settings.antialiasingLevel = 8;
+	m_window.create(VideoMode::getDesktopMode(), "Plant Growing Simulation", Style::Fullscreen, settings);
 	m_window.setVerticalSyncEnabled(true);
 	ImGui::SFML::Init(m_window);
 	m_ground.setup(m_window, m_air);
