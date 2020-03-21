@@ -5,6 +5,7 @@
 #include "Air.h"
 #include "Ground.h"
 #include "Sun.h"
+#include "PlantsManager.h"
 
 class World {
 private:
@@ -12,6 +13,8 @@ private:
 	Air 				m_air;
 	Ground 				m_ground;
 	Sun 				m_sun;
+	PlantsManager 		m_plants;
+
 	sf::Clock 			m_deltaClock;
 	sf::RenderWindow 	m_window;
 

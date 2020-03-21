@@ -5,7 +5,7 @@ CXXFLAGS	=
 SOURCE_PATH = Source
 BUILD_PATH 	= Build
 
-LIBRARIES	= -lsfml-graphics -lsfml-window -lsfml-system -lGL
+LIBRARIES	= -lsfml-graphics -lsfml-window -lsfml-system -lGL -lthor
 INCLUDE		= -I Include/ -I Include/ImGUI
 
 TARGET 		= run

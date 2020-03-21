@@ -1,6 +1,7 @@
 #pragma once
 
 #include <SFML/Graphics.hpp>
+
 #include "GroundDrawer.h"
 #include "Air.h"
 
@@ -19,6 +20,6 @@ public:
 	int getMinerals () const { return m_minerals; }
 	int getHumidity () const { return m_humidity; }
 
-	void update (sf::RenderWindow &window, Air &air);
+	void update (Air &air);
 	void draw (sf::RenderWindow &window);
 };

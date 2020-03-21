@@ -16,7 +16,7 @@ void Ground::setup (RenderWindow &window, Air &air) {
 	m_drawable.update_color(air);
 }
 
-void Ground::update (RenderWindow &window, Air &air) {
+void Ground::update (Air &air) {
 	ImGui::Begin("Ground");
 	ImGui::SliderInt("Minerals", &m_minerals, MIN_MINERALS, MAX_MINERALS);
 	ImGui::SliderInt("Humidity", &m_humidity, MIN_HUMIDITY, MAX_HUMIDITY);
