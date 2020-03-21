@@ -8,6 +8,7 @@ class PlantShape : public thor::ConcaveShape {
 private:
 
 	sf::Vector2f 	mOrigin;
+	sf::Vector2f 	mPosition;
 	float 			mScale;
 
 public:
@@ -22,7 +23,7 @@ public:
 	void scale (float k) { setScale(mScale * k); }
 
 	void setPosition (sf::Vector2f position);
-	sf::Vector2f getPosition () const { return getOrigin(); }
+	sf::Vector2f getPosition () const { return mPosition; }
 
 	void loadFromFile (std::string file);
 

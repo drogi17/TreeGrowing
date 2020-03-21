@@ -10,14 +10,14 @@ using namespace sf;
 PlantsManager::PlantsManager () {}
 
 void PlantsManager::setup (RenderWindow &window) {
-	m_seed.setBottom(window.getSize().y * (GROUND_SIZE + HILL_SIZE));
+	m_seed.setBottom(window.getSize().y * GROUND_SIZE);
 }
 
 void PlantsManager::update (Air &air, Ground &ground, Sun &sun, Vector2f mousePosition) {
     ImGui::Begin("Plants");
 
     const char* items[] = { "Tree", "Flower", "Grass" };
-	static const char* current_item = "Choose Plant";
+	static const char* current_item = "Tree";
     if (ImGui::BeginCombo("##combo", current_item)) {
 	    for (int n = 0; n < IM_ARRAYSIZE(items); n++) {
 	        bool is_selected = (current_item == items[n]);
@@ -38,7 +38,8 @@ void PlantsManager::update (Air &air, Ground &ground, Sun &sun, Vector2f mousePo
     if (m_seed.update(mousePosition)) {
     	string plant = m_seed.getPlant();
     	if (plant == "Tree")
-    		m_trees.emplace_back();
+    		m_trees.emplace_back(m_seed.getPosition());
+
     }
 
     for (auto &tree : m_trees)

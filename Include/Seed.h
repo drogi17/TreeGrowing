@@ -21,6 +21,7 @@ public:
 	void setPlant (std::string name);
 	void setBottom (float y) { m_bottom = y; }
 	std::string getPlant () { return m_plant; }
+	sf::Vector2f getPosition () { return sf::Vector2f(m_seed.getPosition().x, m_bottom); }
 
 	bool isActive () { return m_active; }
 	void click () { if (m_active) m_falling = true; }

@@ -42,9 +42,9 @@ void World::update () {
 
 void World::draw () {
 	m_window.clear(m_air.getColor());
-	ImGui::SFML::Render(m_window);
 	m_plants.draw(m_window);
 	m_ground.draw(m_window);
 	m_sun.draw(m_window);
+	ImGui::SFML::Render(m_window);
 	m_window.display();
 }

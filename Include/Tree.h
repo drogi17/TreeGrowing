@@ -22,7 +22,7 @@ private:
 
 public:
 
-	Tree ();
+	Tree (sf::Vector2f position);
 
 	void update (Air &air, Ground &ground, Sun &sun);
 	void draw (sf::RenderWindow &window);

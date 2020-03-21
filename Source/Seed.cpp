@@ -29,16 +29,17 @@ void Seed::setPlant (string name) {
 	m_seed.setOrigin(Vector2f(m_seed.getPoint(m_seed.getPointCount()/2).x, 
 							  m_seed.getPoint(m_seed.getPointCount()/2).y));
 
-	m_seed.setScale(0.5f, 0.5f);
+	m_seed.setScale(0.4f, 0.4f);
 	m_seed.setFillColor(Color(r, g, b));
 
+	m_plant = name;
 	m_active = true;
 }
 
 bool Seed::update (Vector2f mousePosition) {
 	if (!m_active) return false;
 	if (!m_falling) {
-		m_seed.setPosition(mousePosition);
+		m_seed.setPosition(mousePosition + Vector2f(-5.f, 5.f));
 	} else {
 		m_seed.move(0.f, m_step);
 		m_step += 1.f;
