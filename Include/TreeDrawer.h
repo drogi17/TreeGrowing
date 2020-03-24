@@ -16,7 +16,9 @@ public:
 
 	TreeDrawer (sf::Vector2f positoin);
 
-	void update (float growth);
+	PlantShape& getShape () { return m_tree; }
+
+	bool update (float growth);
 	void draw (sf::RenderWindow &window);
 
 };

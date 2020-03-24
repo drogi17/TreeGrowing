@@ -24,13 +24,16 @@ TreeDrawer::TreeDrawer (Vector2f position)
 	m_tree.setFillColor(Color(89, 73, 68));
 }
 
-void TreeDrawer::update (float growth) {
+bool TreeDrawer::update (float growth) {
 	if (growth > m_step * (m_current + 1) && m_current + 1 < m_shapes) {
 		m_current++;
 		m_tree.loadFromFile(m_path + to_string(m_current) + string(".txt"));
 		m_tree.setPosition(m_tree.getPosition());
+		m_tree.setScale(growth / 100.f);
+		return true;
 	}
 	m_tree.setScale(growth / 100.f);
+	return false;
 }
 
 void TreeDrawer::draw (RenderWindow &window) {

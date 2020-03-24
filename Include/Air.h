@@ -17,6 +17,7 @@ public:
 
 	int getHumidity () const { return m_humidity; }
 	int getTemperature () const { return m_temperature; }
+	float getTemperaturePercentage ();
 	sf::Color getColor () const { return m_color; } 
 	bool isUpdated () const { return m_updated; }
 

@@ -10,6 +10,10 @@ Air::Air ()
 : m_humidity(DEFAULT_HUMIDITY), m_temperature(DEFAULT_TEMPERATURE) 
 { update_color(); }
 
+float Air::getTemperaturePercentage () {
+	return (float) (-MIN_TEMPERATURE + m_temperature) / (MAX_TEMPERATURE - MIN_TEMPERATURE);
+}
+
 void Air::update () {
 	m_updated = false;
 	ImGui::Begin("Air");
